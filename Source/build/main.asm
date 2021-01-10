@@ -1,0 +1,1107 @@
+;--------------------------------------------------------
+; File Created by SDCC : free open source ANSI-C Compiler
+; Version 4.0.0 #11528 (MINGW64)
+;--------------------------------------------------------
+	.module main
+	.optsdcc -mmcs51 --model-small
+	
+;--------------------------------------------------------
+; Public variables in this module
+;--------------------------------------------------------
+	.globl _main
+	.globl _tm0_isr
+	.globl _CCF0
+	.globl _CCF1
+	.globl _CCF2
+	.globl _CCF3
+	.globl _CR
+	.globl _CF
+	.globl _RI
+	.globl _TI
+	.globl _RB8
+	.globl _TB8
+	.globl _REN
+	.globl _SM2
+	.globl _SM1
+	.globl _SM0
+	.globl _IT0
+	.globl _IE0
+	.globl _IT1
+	.globl _IE1
+	.globl _TR0
+	.globl _TF0
+	.globl _TR1
+	.globl _TF1
+	.globl _PX0
+	.globl _PT0
+	.globl _PX1
+	.globl _PT1
+	.globl _PS
+	.globl _PADC
+	.globl _PLVD
+	.globl _PPCA
+	.globl _EX0
+	.globl _ET0
+	.globl _EX1
+	.globl _ET1
+	.globl _ES
+	.globl _EADC
+	.globl _ELVD
+	.globl _EA
+	.globl _P77
+	.globl _P76
+	.globl _P75
+	.globl _P74
+	.globl _P73
+	.globl _P72
+	.globl _P71
+	.globl _P70
+	.globl _P67
+	.globl _P66
+	.globl _P65
+	.globl _P64
+	.globl _P63
+	.globl _P62
+	.globl _P61
+	.globl _P60
+	.globl _P57
+	.globl _P56
+	.globl _P55
+	.globl _P54
+	.globl _P53
+	.globl _P52
+	.globl _P51
+	.globl _P50
+	.globl _P47
+	.globl _P46
+	.globl _P45
+	.globl _P44
+	.globl _P43
+	.globl _P42
+	.globl _P41
+	.globl _P40
+	.globl _P37
+	.globl _P36
+	.globl _P35
+	.globl _P34
+	.globl _P33
+	.globl _P32
+	.globl _P31
+	.globl _P30
+	.globl _P27
+	.globl _P26
+	.globl _P25
+	.globl _P24
+	.globl _P23
+	.globl _P22
+	.globl _P21
+	.globl _P20
+	.globl _P17
+	.globl _P16
+	.globl _P15
+	.globl _P14
+	.globl _P13
+	.globl _P12
+	.globl _P11
+	.globl _P10
+	.globl _P07
+	.globl _P06
+	.globl _P05
+	.globl _P04
+	.globl _P03
+	.globl _P02
+	.globl _P01
+	.globl _P00
+	.globl _P
+	.globl _F1
+	.globl _OV
+	.globl _RS0
+	.globl _RS1
+	.globl _F0
+	.globl _AC
+	.globl _CY
+	.globl _RD
+	.globl _WR
+	.globl _T1
+	.globl _T0
+	.globl _INT1
+	.globl _INT0
+	.globl _TXD
+	.globl _RXD
+	.globl _P3_7
+	.globl _P3_6
+	.globl _P3_5
+	.globl _P3_4
+	.globl _P3_3
+	.globl _P3_2
+	.globl _P3_1
+	.globl _P3_0
+	.globl _P2_7
+	.globl _P2_6
+	.globl _P2_5
+	.globl _P2_4
+	.globl _P2_3
+	.globl _P2_2
+	.globl _P2_1
+	.globl _P2_0
+	.globl _P1_7
+	.globl _P1_6
+	.globl _P1_5
+	.globl _P1_4
+	.globl _P1_3
+	.globl _P1_2
+	.globl _P1_1
+	.globl _P1_0
+	.globl _P0_7
+	.globl _P0_6
+	.globl _P0_5
+	.globl _P0_4
+	.globl _P0_3
+	.globl _P0_2
+	.globl _P0_1
+	.globl _P0_0
+	.globl _PWMCR
+	.globl _PWMFDCR
+	.globl _PWMIF
+	.globl _PWMCFG
+	.globl _PCA_PWM3
+	.globl _PCA_PWM2
+	.globl _PCA_PWM1
+	.globl _PCA_PWM0
+	.globl _CCAP3H
+	.globl _CCAP2H
+	.globl _CCAP1H
+	.globl _CCAP0H
+	.globl _CCAP3L
+	.globl _CCAP2L
+	.globl _CCAP1L
+	.globl _CCAP0L
+	.globl _CCAPM3
+	.globl _CCAPM2
+	.globl _CCAPM1
+	.globl _CCAPM0
+	.globl _CH
+	.globl _CL
+	.globl _CMOD
+	.globl _CCON
+	.globl _CMPCR2
+	.globl _CMPCR1
+	.globl _ISP_CONTR
+	.globl _ISP_TRIG
+	.globl _ISP_CMD
+	.globl _ISP_ADDRL
+	.globl _ISP_ADDRH
+	.globl _ISP_DATA
+	.globl _IAP_CONTR
+	.globl _IAP_TRIG
+	.globl _IAP_CMD
+	.globl _IAP_ADDRL
+	.globl _IAP_ADDRH
+	.globl _IAP_DATA
+	.globl _SPDAT
+	.globl _SPCTL
+	.globl _SPSTAT
+	.globl _ADCCFG
+	.globl _ADC_RESL
+	.globl _ADC_RES
+	.globl _ADC_CONTR
+	.globl _SADEN
+	.globl _SADDR
+	.globl _S4BUF
+	.globl _S4CON
+	.globl _S3BUF
+	.globl _S3CON
+	.globl _S2BUF
+	.globl _S2CON
+	.globl _SBUF
+	.globl _SCON
+	.globl _WDT_CONTR
+	.globl _WKTCH
+	.globl _WKTCL
+	.globl _TL2
+	.globl _TH2
+	.globl _TL3
+	.globl _TH3
+	.globl _TL4
+	.globl _TH4
+	.globl _T2L
+	.globl _T2H
+	.globl _T3L
+	.globl _T3H
+	.globl _T4L
+	.globl _T4H
+	.globl _T4T3M
+	.globl _TH1
+	.globl _TH0
+	.globl _TL1
+	.globl _TL0
+	.globl _TMOD
+	.globl _TCON
+	.globl _AUXINTIF
+	.globl _INTCLKO
+	.globl _IP2H
+	.globl _IPH
+	.globl _IP2
+	.globl _IP
+	.globl _IE2
+	.globl _IE
+	.globl _RSTCFG
+	.globl _VOCTRL
+	.globl _P_SW2
+	.globl _P_SW1
+	.globl _BUS_SPEED
+	.globl _AUXR2
+	.globl _AUXR
+	.globl _PCON
+	.globl _P7M1
+	.globl _P7M0
+	.globl _P6M1
+	.globl _P6M0
+	.globl _P5M1
+	.globl _P5M0
+	.globl _P4M1
+	.globl _P4M0
+	.globl _P3M1
+	.globl _P3M0
+	.globl _P2M1
+	.globl _P2M0
+	.globl _P1M1
+	.globl _P1M0
+	.globl _P0M1
+	.globl _P0M0
+	.globl _P7
+	.globl _P6
+	.globl _P5
+	.globl _P4
+	.globl _P3
+	.globl _P2
+	.globl _P1
+	.globl _P0
+	.globl _DPH1
+	.globl _DPL1
+	.globl _DPS
+	.globl _TA
+	.globl _DPH
+	.globl _DPL
+	.globl _SP
+	.globl _PSW
+	.globl _B
+	.globl _ACC
+	.globl _blinkfast
+	.globl _blink
+	.globl _state
+	.globl _cnt
+	.globl _delay_ms
+;--------------------------------------------------------
+; special function registers
+;--------------------------------------------------------
+	.area RSEG    (ABS,DATA)
+	.org 0x0000
+_ACC	=	0x00e0
+_B	=	0x00f0
+_PSW	=	0x00d0
+_SP	=	0x0081
+_DPL	=	0x0082
+_DPH	=	0x0083
+_TA	=	0x00ae
+_DPS	=	0x00e3
+_DPL1	=	0x00e4
+_DPH1	=	0x00e5
+_P0	=	0x0080
+_P1	=	0x0090
+_P2	=	0x00a0
+_P3	=	0x00b0
+_P4	=	0x00c0
+_P5	=	0x00c8
+_P6	=	0x00e8
+_P7	=	0x00f8
+_P0M0	=	0x0094
+_P0M1	=	0x0093
+_P1M0	=	0x0092
+_P1M1	=	0x0091
+_P2M0	=	0x0096
+_P2M1	=	0x0095
+_P3M0	=	0x00b2
+_P3M1	=	0x00b1
+_P4M0	=	0x00b4
+_P4M1	=	0x00b3
+_P5M0	=	0x00ca
+_P5M1	=	0x00c9
+_P6M0	=	0x00cc
+_P6M1	=	0x00cb
+_P7M0	=	0x00e2
+_P7M1	=	0x00e1
+_PCON	=	0x0087
+_AUXR	=	0x008e
+_AUXR2	=	0x0097
+_BUS_SPEED	=	0x00a1
+_P_SW1	=	0x00a2
+_P_SW2	=	0x00ba
+_VOCTRL	=	0x00bb
+_RSTCFG	=	0x00ff
+_IE	=	0x00a8
+_IE2	=	0x00af
+_IP	=	0x00b8
+_IP2	=	0x00b5
+_IPH	=	0x00b7
+_IP2H	=	0x00b6
+_INTCLKO	=	0x008f
+_AUXINTIF	=	0x00ef
+_TCON	=	0x0088
+_TMOD	=	0x0089
+_TL0	=	0x008a
+_TL1	=	0x008b
+_TH0	=	0x008c
+_TH1	=	0x008d
+_T4T3M	=	0x00d1
+_T4H	=	0x00d2
+_T4L	=	0x00d3
+_T3H	=	0x00d4
+_T3L	=	0x00d5
+_T2H	=	0x00d6
+_T2L	=	0x00d7
+_TH4	=	0x00d2
+_TL4	=	0x00d3
+_TH3	=	0x00d4
+_TL3	=	0x00d5
+_TH2	=	0x00d6
+_TL2	=	0x00d7
+_WKTCL	=	0x00aa
+_WKTCH	=	0x00ab
+_WDT_CONTR	=	0x00c1
+_SCON	=	0x0098
+_SBUF	=	0x0099
+_S2CON	=	0x009a
+_S2BUF	=	0x009b
+_S3CON	=	0x00ac
+_S3BUF	=	0x00ad
+_S4CON	=	0x0084
+_S4BUF	=	0x0085
+_SADDR	=	0x00a9
+_SADEN	=	0x00b9
+_ADC_CONTR	=	0x00bc
+_ADC_RES	=	0x00bd
+_ADC_RESL	=	0x00be
+_ADCCFG	=	0x00de
+_SPSTAT	=	0x00cd
+_SPCTL	=	0x00ce
+_SPDAT	=	0x00cf
+_IAP_DATA	=	0x00c2
+_IAP_ADDRH	=	0x00c3
+_IAP_ADDRL	=	0x00c4
+_IAP_CMD	=	0x00c5
+_IAP_TRIG	=	0x00c6
+_IAP_CONTR	=	0x00c7
+_ISP_DATA	=	0x00c2
+_ISP_ADDRH	=	0x00c3
+_ISP_ADDRL	=	0x00c4
+_ISP_CMD	=	0x00c5
+_ISP_TRIG	=	0x00c6
+_ISP_CONTR	=	0x00c7
+_CMPCR1	=	0x00e6
+_CMPCR2	=	0x00e7
+_CCON	=	0x00d8
+_CMOD	=	0x00d9
+_CL	=	0x00e9
+_CH	=	0x00f9
+_CCAPM0	=	0x00da
+_CCAPM1	=	0x00db
+_CCAPM2	=	0x00dc
+_CCAPM3	=	0x00dd
+_CCAP0L	=	0x00ea
+_CCAP1L	=	0x00eb
+_CCAP2L	=	0x00ec
+_CCAP3L	=	0x00ed
+_CCAP0H	=	0x00fa
+_CCAP1H	=	0x00fb
+_CCAP2H	=	0x00fc
+_CCAP3H	=	0x00fd
+_PCA_PWM0	=	0x00f2
+_PCA_PWM1	=	0x00f3
+_PCA_PWM2	=	0x00f4
+_PCA_PWM3	=	0x00f5
+_PWMCFG	=	0x00f1
+_PWMIF	=	0x00f6
+_PWMFDCR	=	0x00f7
+_PWMCR	=	0x00fe
+;--------------------------------------------------------
+; special function bits
+;--------------------------------------------------------
+	.area RSEG    (ABS,DATA)
+	.org 0x0000
+_P0_0	=	0x0080
+_P0_1	=	0x0081
+_P0_2	=	0x0082
+_P0_3	=	0x0083
+_P0_4	=	0x0084
+_P0_5	=	0x0085
+_P0_6	=	0x0086
+_P0_7	=	0x0087
+_P1_0	=	0x0090
+_P1_1	=	0x0091
+_P1_2	=	0x0092
+_P1_3	=	0x0093
+_P1_4	=	0x0094
+_P1_5	=	0x0095
+_P1_6	=	0x0096
+_P1_7	=	0x0097
+_P2_0	=	0x00a0
+_P2_1	=	0x00a1
+_P2_2	=	0x00a2
+_P2_3	=	0x00a3
+_P2_4	=	0x00a4
+_P2_5	=	0x00a5
+_P2_6	=	0x00a6
+_P2_7	=	0x00a7
+_P3_0	=	0x00b0
+_P3_1	=	0x00b1
+_P3_2	=	0x00b2
+_P3_3	=	0x00b3
+_P3_4	=	0x00b4
+_P3_5	=	0x00b5
+_P3_6	=	0x00b6
+_P3_7	=	0x00b7
+_RXD	=	0x00b0
+_TXD	=	0x00b1
+_INT0	=	0x00b2
+_INT1	=	0x00b3
+_T0	=	0x00b4
+_T1	=	0x00b5
+_WR	=	0x00b6
+_RD	=	0x00b7
+_CY	=	0x00d7
+_AC	=	0x00d6
+_F0	=	0x00d5
+_RS1	=	0x00d4
+_RS0	=	0x00d3
+_OV	=	0x00d2
+_F1	=	0x00d1
+_P	=	0x00d0
+_P00	=	0x0080
+_P01	=	0x0081
+_P02	=	0x0082
+_P03	=	0x0083
+_P04	=	0x0084
+_P05	=	0x0085
+_P06	=	0x0086
+_P07	=	0x0087
+_P10	=	0x0090
+_P11	=	0x0091
+_P12	=	0x0092
+_P13	=	0x0093
+_P14	=	0x0094
+_P15	=	0x0095
+_P16	=	0x0096
+_P17	=	0x0097
+_P20	=	0x00a0
+_P21	=	0x00a1
+_P22	=	0x00a2
+_P23	=	0x00a3
+_P24	=	0x00a4
+_P25	=	0x00a5
+_P26	=	0x00a6
+_P27	=	0x00a7
+_P30	=	0x00b0
+_P31	=	0x00b1
+_P32	=	0x00b2
+_P33	=	0x00b3
+_P34	=	0x00b4
+_P35	=	0x00b5
+_P36	=	0x00b6
+_P37	=	0x00b7
+_P40	=	0x00c0
+_P41	=	0x00c1
+_P42	=	0x00c2
+_P43	=	0x00c3
+_P44	=	0x00c4
+_P45	=	0x00c5
+_P46	=	0x00c6
+_P47	=	0x00c7
+_P50	=	0x00c8
+_P51	=	0x00c9
+_P52	=	0x00ca
+_P53	=	0x00cb
+_P54	=	0x00cc
+_P55	=	0x00cd
+_P56	=	0x00ce
+_P57	=	0x00cf
+_P60	=	0x00e8
+_P61	=	0x00e9
+_P62	=	0x00ea
+_P63	=	0x00eb
+_P64	=	0x00ec
+_P65	=	0x00ed
+_P66	=	0x00ee
+_P67	=	0x00ef
+_P70	=	0x00f8
+_P71	=	0x00f9
+_P72	=	0x00fa
+_P73	=	0x00fb
+_P74	=	0x00fc
+_P75	=	0x00fd
+_P76	=	0x00fe
+_P77	=	0x00ff
+_EA	=	0x00af
+_ELVD	=	0x00ae
+_EADC	=	0x00ad
+_ES	=	0x00ac
+_ET1	=	0x00ab
+_EX1	=	0x00aa
+_ET0	=	0x00a9
+_EX0	=	0x00a8
+_PPCA	=	0x00bf
+_PLVD	=	0x00be
+_PADC	=	0x00bd
+_PS	=	0x00bc
+_PT1	=	0x00bb
+_PX1	=	0x00ba
+_PT0	=	0x00b9
+_PX0	=	0x00b8
+_TF1	=	0x008f
+_TR1	=	0x008e
+_TF0	=	0x008d
+_TR0	=	0x008c
+_IE1	=	0x008b
+_IT1	=	0x008a
+_IE0	=	0x0089
+_IT0	=	0x0088
+_SM0	=	0x009f
+_SM1	=	0x009e
+_SM2	=	0x009d
+_REN	=	0x009c
+_TB8	=	0x009b
+_RB8	=	0x009a
+_TI	=	0x0099
+_RI	=	0x0098
+_CF	=	0x00df
+_CR	=	0x00de
+_CCF3	=	0x00db
+_CCF2	=	0x00da
+_CCF1	=	0x00d9
+_CCF0	=	0x00d8
+;--------------------------------------------------------
+; overlayable register banks
+;--------------------------------------------------------
+	.area REG_BANK_0	(REL,OVR,DATA)
+	.ds 8
+	.area REG_BANK_1	(REL,OVR,DATA)
+	.ds 8
+;--------------------------------------------------------
+; internal ram data
+;--------------------------------------------------------
+	.area DSEG    (DATA)
+_cnt::
+	.ds 2
+_state::
+	.ds 1
+;--------------------------------------------------------
+; overlayable items in internal ram 
+;--------------------------------------------------------
+	.area	OSEG    (OVR,DATA)
+;--------------------------------------------------------
+; Stack segment in internal ram 
+;--------------------------------------------------------
+	.area	SSEG
+__start__stack:
+	.ds	1
+
+;--------------------------------------------------------
+; indirectly addressable internal ram data
+;--------------------------------------------------------
+	.area ISEG    (DATA)
+;--------------------------------------------------------
+; absolute internal ram data
+;--------------------------------------------------------
+	.area IABS    (ABS,DATA)
+	.area IABS    (ABS,DATA)
+;--------------------------------------------------------
+; bit data
+;--------------------------------------------------------
+	.area BSEG    (BIT)
+_blink::
+	.ds 1
+_blinkfast::
+	.ds 1
+;--------------------------------------------------------
+; paged external ram data
+;--------------------------------------------------------
+	.area PSEG    (PAG,XDATA)
+;--------------------------------------------------------
+; external ram data
+;--------------------------------------------------------
+	.area XSEG    (XDATA)
+;--------------------------------------------------------
+; absolute external ram data
+;--------------------------------------------------------
+	.area XABS    (ABS,XDATA)
+;--------------------------------------------------------
+; external initialized ram data
+;--------------------------------------------------------
+	.area XISEG   (XDATA)
+	.area HOME    (CODE)
+	.area GSINIT0 (CODE)
+	.area GSINIT1 (CODE)
+	.area GSINIT2 (CODE)
+	.area GSINIT3 (CODE)
+	.area GSINIT4 (CODE)
+	.area GSINIT5 (CODE)
+	.area GSINIT  (CODE)
+	.area GSFINAL (CODE)
+	.area CSEG    (CODE)
+;--------------------------------------------------------
+; interrupt vector 
+;--------------------------------------------------------
+	.area HOME    (CODE)
+__interrupt_vect:
+	ljmp	__sdcc_gsinit_startup
+	reti
+	.ds	7
+	ljmp	_tm0_isr
+;--------------------------------------------------------
+; global & static initialisations
+;--------------------------------------------------------
+	.area HOME    (CODE)
+	.area GSINIT  (CODE)
+	.area GSFINAL (CODE)
+	.area GSINIT  (CODE)
+	.globl __sdcc_gsinit_startup
+	.globl __sdcc_program_startup
+	.globl __start__stack
+	.globl __mcs51_genXINIT
+	.globl __mcs51_genXRAMCLEAR
+	.globl __mcs51_genRAMCLEAR
+;	src/main.c:26: int cnt=0;
+	clr	a
+	mov	_cnt,a
+	mov	(_cnt + 1),a
+;	src/main.c:38: byte state=0;
+;	1-genFromRTrack replaced	mov	_state,#0x00
+	mov	_state,a
+	.area GSFINAL (CODE)
+	ljmp	__sdcc_program_startup
+;--------------------------------------------------------
+; Home
+;--------------------------------------------------------
+	.area HOME    (CODE)
+	.area HOME    (CODE)
+__sdcc_program_startup:
+	ljmp	_main
+;	return from main will return to caller
+;--------------------------------------------------------
+; code
+;--------------------------------------------------------
+	.area CSEG    (CODE)
+;------------------------------------------------------------
+;Allocation info for local variables in function 'tm0_isr'
+;------------------------------------------------------------
+;	src/main.c:30: void tm0_isr() __interrupt 1 __using 1
+;	-----------------------------------------
+;	 function tm0_isr
+;	-----------------------------------------
+_tm0_isr:
+	ar7 = 0x0f
+	ar6 = 0x0e
+	ar5 = 0x0d
+	ar4 = 0x0c
+	ar3 = 0x0b
+	ar2 = 0x0a
+	ar1 = 0x09
+	ar0 = 0x08
+	push	acc
+	push	b
+	push	psw
+;	src/main.c:32: if(++cnt>2000){
+	inc	_cnt
+	clr	a
+	cjne	a,_cnt,00115$
+	inc	(_cnt + 1)
+00115$:
+	clr	c
+	mov	a,#0xd0
+	subb	a,_cnt
+	mov	a,#(0x07 ^ 0x80)
+	mov	b,(_cnt + 1)
+	xrl	b,#0x80
+	subb	a,b
+	jnc	00105$
+;	src/main.c:33: blinkfast=!blinkfast;
+	cpl	_blinkfast
+;	src/main.c:34: if(blinkfast)blink=!blink; // slow */
+	jnb	_blinkfast,00105$
+	cpl	_blink
+00105$:
+;	src/main.c:36: }
+	pop	psw
+	pop	b
+	pop	acc
+	reti
+;	eliminated unneeded mov psw,# (no regs used in bank)
+;	eliminated unneeded push/pop dpl
+;	eliminated unneeded push/pop dph
+;------------------------------------------------------------
+;Allocation info for local variables in function 'main'
+;------------------------------------------------------------
+;i                         Allocated to registers r5 r6 
+;b                         Allocated to registers r5 r6 
+;------------------------------------------------------------
+;	src/main.c:53: void main()
+;	-----------------------------------------
+;	 function main
+;	-----------------------------------------
+_main:
+	ar7 = 0x07
+	ar6 = 0x06
+	ar5 = 0x05
+	ar4 = 0x04
+	ar3 = 0x03
+	ar2 = 0x02
+	ar1 = 0x01
+	ar0 = 0x00
+;	src/main.c:57: bool ok=0;
+	mov	r7,#0x00
+;	src/main.c:61: P3M0=0x2A;//00101010
+	mov	_P3M0,#0x2a
+;	src/main.c:62: P3M1=0;
+;	1-genFromRTrack replaced	mov	_P3M1,#0x00
+	mov	_P3M1,r7
+;	src/main.c:65: AUXR = 0x80; //timer0 work in 1T mode
+	mov	_AUXR,#0x80
+;	src/main.c:66: TMOD = 0x00; //set timer0 as mode0 (16-bit auto-reload)
+;	1-genFromRTrack replaced	mov	_TMOD,#0x00
+	mov	_TMOD,r7
+;	src/main.c:67: TL0 = T200MS; //initial timer0 low byte
+;	1-genFromRTrack replaced	mov	_TL0,#0x00
+	mov	_TL0,r7
+;	src/main.c:68: TH0 = (byte) T200MS >> 8; //initial timer0 high byte
+;	1-genFromRTrack replaced	mov	_TH0,#0x00
+	mov	_TH0,r7
+;	src/main.c:69: TR0 = 1; //timer0 start running
+;	assignBit
+	setb	_TR0
+;	src/main.c:70: ET0 = 1; //enable timer0 interrupt
+;	assignBit
+	setb	_ET0
+;	src/main.c:71: EA = 1; //open global interrupt switch
+;	assignBit
+	setb	_EA
+;	src/main.c:72: state=0;
+	mov	_state,#0x00
+;	src/main.c:73: LED=1;
+;	assignBit
+	setb	_P3_3
+;	src/main.c:74: delay_ms(250);
+	mov	dptr,#0x00fa
+	push	ar7
+	lcall	_delay_ms
+	pop	ar7
+;	src/main.c:75: LED=0;
+;	assignBit
+	clr	_P3_3
+;	src/main.c:76: while (1){
+00137$:
+;	src/main.c:77: switch (state){
+	mov	a,_state
+	add	a,#0xff - 0x04
+	jc	00137$
+	mov	a,_state
+	mov	b,#0x03
+	mul	ab
+	mov	dptr,#00293$
+	jmp	@a+dptr
+00293$:
+	ljmp	00101$
+	ljmp	00104$
+	ljmp	00109$
+	ljmp	00128$
+	ljmp	00132$
+;	src/main.c:78: case 0:
+00101$:
+;	src/main.c:79: DISABLEVCC=0;//power onw
+;	assignBit
+	clr	_P3_1
+;	src/main.c:80: DISABLETxD=1;
+;	assignBit
+	setb	_P3_5
+;	src/main.c:81: LED=1;
+;	assignBit
+	setb	_P3_3
+;	src/main.c:82: if(!RTS) state++;  /* RTC pin 1*/
+	jb	_P3_4,00137$
+	inc	_state
+;	src/main.c:83: break;
+;	src/main.c:88: case 1:
+	sjmp	00137$
+00104$:
+;	src/main.c:89: if(RTS)state=0; // go back
+	jnb	_P3_4,00106$
+	mov	_state,#0x00
+00106$:
+;	src/main.c:90: if(!TxDpc)state++; // wait for ^^|__ on TxD pin 7
+	jb	_P3_2,00137$
+	inc	_state
+;	src/main.c:91: break;
+;	src/main.c:95: case 2:			
+	sjmp	00137$
+00109$:
+;	src/main.c:97: LED=1;					// LED used for diagnostic only
+;	assignBit
+	setb	_P3_3
+;	src/main.c:98: for(i=0;i<BITTIME;i++); // short wait 208us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00141$:
+	dec	r5
+	cjne	r5,#0xff,00297$
+	dec	r6
+00297$:
+	mov	a,r5
+	orl	a,r6
+	jnz	00141$
+;	src/main.c:99: LED=0;
+;	assignBit
+	clr	_P3_3
+;	src/main.c:100: ok=!TxDpc;				// check must be 0
+	mov	c,_P3_2
+	cpl	c
+	clr	a
+	rlc	a
+	mov	r7,a
+;	src/main.c:101: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00144$:
+	dec	r5
+	cjne	r5,#0xff,00299$
+	dec	r6
+00299$:
+	mov	a,r5
+	orl	a,r6
+;	src/main.c:104: for(b=0;b<7;b++){
+	jnz	00144$
+	mov	r5,a
+	mov	r6,a
+00151$:
+;	src/main.c:105: LED=1;
+;	assignBit
+	setb	_P3_3
+;	src/main.c:106: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r3,#0xbe
+	mov	r4,#0x00
+00147$:
+	dec	r3
+	cjne	r3,#0xff,00301$
+	dec	r4
+00301$:
+	mov	a,r3
+	orl	a,r4
+	jnz	00147$
+;	src/main.c:107: if(!TxDpc) ok=0;		// check must be 1
+	jb	_P3_2,00114$
+	mov	r7,#0x00
+00114$:
+;	src/main.c:108: LED=0;
+;	assignBit
+	clr	_P3_3
+;	src/main.c:109: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r3,#0xbe
+	mov	r4,#0x00
+00150$:
+	dec	r3
+	cjne	r3,#0xff,00304$
+	dec	r4
+00304$:
+	mov	a,r3
+	orl	a,r4
+	jnz	00150$
+;	src/main.c:104: for(b=0;b<7;b++){
+	inc	r5
+	cjne	r5,#0x00,00306$
+	inc	r6
+00306$:
+	mov	ar3,r5
+	mov	ar4,r6
+	clr	c
+	mov	a,r3
+	subb	a,#0x07
+	mov	a,r4
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00151$
+;	src/main.c:112: LED=1;
+;	assignBit
+	setb	_P3_3
+;	src/main.c:113: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00155$:
+	dec	r5
+	cjne	r5,#0xff,00308$
+	dec	r6
+00308$:
+	mov	a,r5
+	orl	a,r6
+	jnz	00155$
+;	src/main.c:114: if(TxDpc) ok=0;			// check must be 0
+	jnb	_P3_2,00119$
+	mov	r7,#0x00
+00119$:
+;	src/main.c:115: LED=0;
+;	assignBit
+	clr	_P3_3
+;	src/main.c:116: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00158$:
+	dec	r5
+	cjne	r5,#0xff,00311$
+	dec	r6
+00311$:
+	mov	a,r5
+	orl	a,r6
+	jnz	00158$
+;	src/main.c:118: LED=1;
+;	assignBit
+	setb	_P3_3
+;	src/main.c:119: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00161$:
+	dec	r5
+	cjne	r5,#0xff,00313$
+	dec	r6
+00313$:
+	mov	a,r5
+	orl	a,r6
+	jnz	00161$
+;	src/main.c:120: if(!TxDpc) ok=0;		// check must be 1
+	jb	_P3_2,00123$
+	mov	r7,#0x00
+00123$:
+;	src/main.c:121: LED=0;
+;	assignBit
+	clr	_P3_3
+;	src/main.c:122: for(i=0;i<BITTIME;i++); // short wait 200us
+	mov	r5,#0xbe
+	mov	r6,#0x00
+00164$:
+	dec	r5
+	cjne	r5,#0xff,00316$
+	dec	r6
+00316$:
+	mov	a,r5
+	orl	a,r6
+	jnz	00164$
+;	src/main.c:124: LED=ok;					// diagnose
+;	assignBit
+	mov	a,r7
+	add	a,#0xff
+	mov	_P3_3,c
+;	src/main.c:125: if(ok)state++;else state = 4;
+	mov	a,r7
+	jz	00126$
+	inc	_state
+	ljmp	00137$
+00126$:
+	mov	_state,#0x04
+;	src/main.c:126: break;
+	ljmp	00137$
+;	src/main.c:128: case 3:
+00128$:
+;	src/main.c:129: if(ok)		LED=blinkfast;		else LED=blink;
+	mov	a,r7
+	jz	00130$
+;	assignBit
+	mov	c,_blinkfast
+	mov	_P3_3,c
+	sjmp	00131$
+00130$:
+;	assignBit
+	mov	c,_blink
+	mov	_P3_3,c
+00131$:
+;	src/main.c:130: DISABLEVCC=1;
+;	assignBit
+	setb	_P3_1
+;	src/main.c:131: delay_ms(500);
+	mov	dptr,#0x01f4
+	push	ar7
+	lcall	_delay_ms
+	pop	ar7
+;	src/main.c:132: DISABLEVCC=0;
+;	assignBit
+	clr	_P3_1
+;	src/main.c:133: state++;
+	inc	_state
+;	src/main.c:134: break;
+	ljmp	00137$
+;	src/main.c:136: case 4:// transfer
+00132$:
+;	src/main.c:137: DISABLETxD=0;
+;	assignBit
+	clr	_P3_5
+;	src/main.c:138: LED=blink;
+;	assignBit
+	mov	c,_blink
+	mov	_P3_3,c
+;	src/main.c:139: if(RTS)state=0;
+	jb	_P3_4,00320$
+	ljmp	00137$
+00320$:
+	mov	_state,#0x00
+;	src/main.c:144: }
+;	src/main.c:146: }
+	ljmp	00137$
+;------------------------------------------------------------
+;Allocation info for local variables in function 'delay_ms'
+;------------------------------------------------------------
+;ms                        Allocated to registers r6 r7 
+;i                         Allocated to registers r4 r5 
+;------------------------------------------------------------
+;	src/main.c:149: void  delay_ms(unsigned int ms)
+;	-----------------------------------------
+;	 function delay_ms
+;	-----------------------------------------
+_delay_ms:
+	mov	r6,dpl
+	mov	r7,dph
+;	src/main.c:153: if(ms<1)return;	//added to handle 0 no delay. RH
+	clr	c
+	mov	a,r6
+	subb	a,#0x01
+	mov	a,r7
+	subb	a,#0x00
+	jnc	00114$
+;	src/main.c:154: do{
+	ret
+00114$:
+00106$:
+;	src/main.c:155: i = FOSC / 18000;//19520=922ms;//18732=961ms;//  2*13000;//26000=694ms
+	mov	r4,#0x66
+	mov	r5,#0x02
+;	src/main.c:156: while(--i)    ;   //14T per loop
+00103$:
+	mov	a,r4
+	add	a,#0xff
+	mov	r2,a
+	mov	a,r5
+	addc	a,#0xff
+	mov	r3,a
+	mov	ar4,r2
+	mov	ar5,r3
+	mov	a,r2
+	orl	a,r3
+	jnz	00103$
+;	src/main.c:157: }while(--ms);
+	dec	r6
+	cjne	r6,#0xff,00130$
+	dec	r7
+00130$:
+	mov	a,r6
+	orl	a,r7
+	jnz	00106$
+;	src/main.c:158: }
+	ret
+	.area CSEG    (CODE)
+	.area CONST   (CODE)
+	.area XINIT   (CODE)
+	.area CABS    (ABS,CODE)
